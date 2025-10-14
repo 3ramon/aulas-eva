@@ -26,13 +26,16 @@ idade = 15
 // || 
 // &&
 
+//array
 pessoa = {
     'nome': 'Ramon',
     'idade': 25
 }
 
+
 console.log('Exemplo acesso em objeto', pessoa.nome)
 
+//objeto
 pessoas = [
     {
         'nome': 'Maria',
