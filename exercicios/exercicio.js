@@ -1,9 +1,13 @@
 class Produto {
+    
     constructor(nome, preco, quantidadeEmEstoque) {
         this.nome = nome;
         this.preco = preco;
         this.quantidadeEmEstoque = quantidadeEmEstoque;
         //porque usamos o this?
+
+        // O this é a palavra que dentro da planta (a class) se refere a casa específica que está sendo construida
+        // É a referencia do objeto atual, à instância específica da classe.
     }
 
     getValorTotalEmEstoque() {
@@ -26,7 +30,7 @@ class Produto {
     }
 
     exibirInfo() {
-        return console.log(`${this.nome} - R$ ${this.preco}`);
+        return `${this.nome} - R$ ${this.preco}`;
     }
 }
 
@@ -52,9 +56,8 @@ class ProdutoDigital extends Produto {
     }
 
     exibirInfo() {
-        super.exibirInfo();
-        console.log(this.linkDownload);
-        console.log("");
+        const infoPai = super.exibirInfo();
+        return `${infoPai} - Link: ${this.linkDownload}`;
     }
 }
 
@@ -69,9 +72,8 @@ class ProdutoFisico extends Produto {
     }
 
     exibirInfo() {
-        super.exibirInfo();
-        console.log(this.pesoEmGramas,);
-        console.log("");
+        const infoPai = super.exibirInfo();
+        return `${infoPai} - Peso: ${this.pesoEmGramas}`;
     }
 }
 
@@ -115,4 +117,12 @@ carrinho.push(livro);
 carrinho.push(carro);
 
 console.log("PERCORRENDO O CARRINHO COM FOREACH")
-carrinho.forEach((item) => item.exibirInfo());
+carrinho.forEach((item) => {
+    if(item instanceof ProdutoDigital)
+        console.log(item.exibirInfo())
+});
+
+// Resumo sugestões de melhoria
+// Reusabilidade - exibir info se torna mais util considerando que ele somente vai retornar dados
+// Separação de resposabilidades A classe sendo responsavel por gerenciar seus dados e logica de negocio.
+// O código que usa a classe é responsável pela apresentação (console.log).
