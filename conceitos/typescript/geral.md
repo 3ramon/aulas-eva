@@ -1,0 +1,1 @@
+Tipos basicos: string, number, boolean, any[]
